@@ -1,0 +1,26 @@
+.bg-custom-p {
+    background: -webkit-linear-gradient(to right, #bcb4cc, hsl(289, 57%, 95%));
+    background: -moz-linear-gradient(to right, #bcb4cc, #f6e9f9);
+    background: linear-gradient(to right, #bcb4cc, #f6e9f9);
+}
+
+.bg-custom-s {
+    background-color: #2a325e;
+}
+
+.text-custom-s {
+    color: #2a325e;
+}
+
+.bg-custom-body {
+    background-color: #f6e9f9;
+}
+
+.bg-custom-card-b {
+    background-color: #bcb4cc;
+}
+
+.custom-w {
+    width: 28%;
+    min-width: 260px;
+}
