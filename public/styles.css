@@ -24,3 +24,32 @@
     width: 28%;
     min-width: 260px;
 }
+
+.custom-inp {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid #f6e9f9;
+    padding: 6px 3px;
+    margin: 5px 0px;
+    color: #2a325e;
+}
+
+.custom-inp:focus {
+    border-bottom: 1px solid #2a325e;
+}
+
+.custom-textarea {
+    background-color: transparent;
+    border: 1px solid #f6e9f9;
+    color: #2a325e;
+    border-radius: 3px;
+    margin: 15px 0px;
+    height: 120px;
+    padding: 3px;
+    text-align: left;
+}
+
+.custom-textarea:focus {
+    outline-color:#2a325e;
+}

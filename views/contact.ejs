@@ -1,0 +1,26 @@
+<%- include('partials/header') -%>
+
+
+<main >
+    <h2 class="my-4 text-center">Contact Us</h2>
+
+    <div class="w-25 m-auto bg-custom-card-b border border-white border-4 rounded-4 p-4 ">
+        <form action="/contact">
+            <div >
+                <input type="text" name="name" placeholder="your fullname" class="w-100 custom-inp " autocomplete="off">
+            </div>
+            <div>
+                <input type="email" name="email" placeholder="your email" class="w-100 custom-inp" autocomplete="off">
+            </div>
+            <div>
+                <textarea class="w-100 custom-textarea">Let us a message</textarea> 
+            </div>
+            <button class="bg-custom-s w-100 d-inline-block border-0 outline-none text-light rounded-pill p-2">Submit</button>
+        </form>
+    </div>
+
+    
+</main>
+
+
+<%- include('partials/footer') -%>
