@@ -54,7 +54,14 @@
     outline-color:#2a325e;
 }
 
-button.hovering:hover {
+.hovering {
+    background-color: transparent;
+    margin-top: 20px;
+    padding: 6px 18px;
+    border: 1px solid #2a325e;
+    outline: none;
+}
+.hovering:hover {
     background-color: #2a325e;
     border: none;
     color: hsl(289, 57%, 95%);

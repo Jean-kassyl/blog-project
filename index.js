@@ -1,12 +1,19 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const _ = require('lodash')
 
 
 const app = express()
 
-const homeContent = `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur distinctio fugit 
-maxime qui voluptatibus asperiores expedita magni illum debitis quidem? Nisi doloremque 
-fuga numquam reiciendis suscipit, nam quas eveniet at quis voluptatibus corrupti.`
+const home = [
+    {
+        id: 1,
+        title: "my life story",
+        content: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur distinctio fugit 
+        maxime qui voluptatibus asperiores expedita magni illum debitis quidem? Nisi doloremque 
+        fuga numquam reiciendis suscipit, nam quas eveniet at quis voluptatibus corrupti.`
+    }
+] 
 
 const aboutContent = `Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
 Facilis praesentium eligendi atque excepturi accusantium. 
@@ -19,32 +26,50 @@ impedit non cupiditate corporis architecto, ut commodi praesentium nihil
 dolores a cum explicabo voluptates veniam similique sint? Modi, voluptas!`
 
 app.set("view engine", "ejs")
-app.use(express.static('public'))
+app.use(express.static(__dirname + '/public'))
+app.use(bodyParser.urlencoded({extended: true}))
+
 app.get('/', (req, res) => {
-    res.render('index', {content: homeContent, title: "my life in brief"})
+    const logger = () => {
+        console.log(home)
+    }
+    res.render('index', {home: home, bigTitle: "Home"})
 })
 
 app.get('/about', function(req, res){
-    res.render('about', {content: aboutContent})
+    res.render('about', {content: aboutContent, bigTitle: "About"})
 })
 
 app.get('/contact', function(req, res){
-    res.render('contact')
+    res.render('contact', {bigTitle: "contact"})
 })
 
 app.get('/create-post', function(req, res){
-    res.render('createPost')
+    
+    res.render('createPost', {bigTitle: "create"})
 })
 
 app.post('/create-post', function(req, res){
-
-    res.redirect('createPost')
+    const title = req.body.title;
+    const content = req.body.post;
+    const id = home.length + 1
+    if(title && content && id){
+        home.push({id, title, content})
+    }
+    
+    res.redirect('/')
 })
 
-app.get('/:single', (req, res) => {
-    const single = req.params.single;
-    console.log(single)
-    res.render('singlePost', {content: homeContent, title: single})
+app.get('/posts/:single', (req, res) => {
+    const single = _.lowerCase(req.params.single);
+    
+    
+    let currentPost = home.find(post => post.title.toLowerCase() === single)
+    if(!currentPost){
+        res.status(404).end()
+    }
+    
+    res.render('singlePost', {currentPost: currentPost, bigTitle: "post"})
    
 })
 
