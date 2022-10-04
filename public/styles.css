@@ -53,3 +53,9 @@
 .custom-textarea:focus {
     outline-color:#2a325e;
 }
+
+button.hovering:hover {
+    background-color: #2a325e;
+    border: none;
+    color: hsl(289, 57%, 95%);
+}

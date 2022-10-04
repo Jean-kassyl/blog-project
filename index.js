@@ -21,7 +21,7 @@ dolores a cum explicabo voluptates veniam similique sint? Modi, voluptas!`
 app.set("view engine", "ejs")
 app.use(express.static('public'))
 app.get('/', (req, res) => {
-    res.render('index', {content: homeContent})
+    res.render('index', {content: homeContent, title: "my life in brief"})
 })
 
 app.get('/about', function(req, res){
@@ -31,6 +31,28 @@ app.get('/about', function(req, res){
 app.get('/contact', function(req, res){
     res.render('contact')
 })
+
+app.get('/create-post', function(req, res){
+    res.render('createPost')
+})
+
+app.post('/create-post', function(req, res){
+
+    res.redirect('createPost')
+})
+
+app.get('/:single', (req, res) => {
+    const single = req.params.single;
+    console.log(single)
+    res.render('singlePost', {content: homeContent, title: single})
+   
+})
+
+
+
+
+
+
 const PORT = process.env.PORT || "3000"
 
 app.listen(PORT ,() => {
